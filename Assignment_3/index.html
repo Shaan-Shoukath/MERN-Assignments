@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 - DOM Implementation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="greeting">Hello</h1>
+        </header>
+
+        <div class="boxes-container">
+            <div class="color-box" id="redBox" onclick="changeColor('red')">
+                Red
+            </div>
+            <div class="color-box" id="blueBox" onclick="changeColor('blue')">
+                Blue
+            </div>
+            <div class="color-box" id="greenBox" onclick="changeColor('green')">
+                Green
+            </div>
+            <div class="color-box" id="yellowBox" onclick="changeColor('yellow')">
+                Yellow
+            </div>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="nameInput">Enter your name:</label>
+                <input type="text" id="nameInput" placeholder="Type your name here...">
+            </div>
+            <button id="greetButton" onclick="greetUser()">Greet Me!</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
