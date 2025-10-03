@@ -3,211 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - CleanCare Laundry</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Contact - Simple Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        p {
+            line-height: 1.6;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="/home" class="logo">CleanCare Laundry</a>
-                <ul class="nav-menu">
-                    <li><a href="/home" class="nav-link">Home</a></li>
-                    <li><a href="/about" class="nav-link">About</a></li>
-                    <li><a href="/services" class="nav-link">Services</a></li>
-                    <li><a href="/contact" class="nav-link active">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Header -->
-        <header class="header">
-            <h1 class="page-title">Contact CleanCare Laundry</h1>
-            <p class="page-subtitle">Get in touch with us for all your laundry and dry cleaning needs</p>
-        </header>
-
-        <!-- Main Content -->
-        <main class="content">
-            <section class="content-section">
-                <h2 class="section-title">📞 Get in Touch</h2>
-                <p class="section-text">
-                    We'd love to hear from you! Whether you have questions about our services, 
-                    need to schedule a pickup, or want to provide feedback, our friendly team 
-                    is here to help. Contact us using any of the methods below.
-                </p>
-            </section>
-
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <h3 class="contact-title">Phone</h3>
-                    <div class="contact-details">
-                        <strong>(555) 123-4567</strong><br>
-                        Available 7 days a week<br>
-                        7:00 AM - 8:00 PM
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <h3 class="contact-title">Email</h3>
-                    <div class="contact-details">
-                        <strong>info@cleancare-laundry.com</strong><br>
-                        We respond within 24 hours<br>
-                        Monday through Sunday
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <h3 class="contact-title">Location</h3>
-                    <div class="contact-details">
-                        <strong>123 Main Street</strong><br>
-                        Downtown District<br>
-                        City, State 12345
-                    </div>
-                </div>
-            </div>
-
-            <!-- Business Hours -->
-            <section class="content-section">
-                <h2 class="section-title">🕒 Business Hours</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📅</div>
-                        <h3 class="feature-title">Weekdays</h3>
-                        <p class="feature-description">
-                            <strong>Monday - Friday</strong><br>
-                            7:00 AM - 7:00 PM<br>
-                            Full service available
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 class="feature-title">Saturday</h3>
-                        <p class="feature-description">
-                            <strong>Saturday</strong><br>
-                            8:00 AM - 6:00 PM<br>
-                            All services available
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">☀️</div>
-                        <h3 class="feature-title">Sunday</h3>
-                        <p class="feature-description">
-                            <strong>Sunday</strong><br>
-                            9:00 AM - 5:00 PM<br>
-                            Pickup & delivery only
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Form -->
-            <section class="content-section">
-                <h2 class="section-title">💬 Send Us a Message</h2>
-                <p class="section-text">
-                    Have a question or want to schedule a service? Fill out the form below and 
-                    we'll get back to you as soon as possible.
-                </p>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name *</label>
-                        <input type="text" id="name" name="name" class="form-input" required 
-                               placeholder="Enter your full name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address *</label>
-                        <input type="email" id="email" name="email" class="form-input" required 
-                               placeholder="Enter your email address">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" 
-                               placeholder="(555) 123-4567">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service" class="form-label">Service Interested In</label>
-                        <select id="service" name="service" class="form-input">
-                            <option value="">Select a service</option>
-                            <option value="wash-fold">Wash & Fold</option>
-                            <option value="dry-cleaning">Dry Cleaning</option>
-                            <option value="pickup-delivery">Pickup & Delivery</option>
-                            <option value="express">Express Service</option>
-                            <option value="alterations">Alterations</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message *</label>
-                        <textarea id="message" name="message" class="form-textarea" required 
-                                  placeholder="Tell us how we can help you..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </section>
-
-            <!-- Quick Actions -->
-            <section class="content-section">
-                <h2 class="section-title">⚡ Quick Actions</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">📞</div>
-                        <h3 class="feature-title">Schedule Pickup</h3>
-                        <p class="feature-description">
-                            Call us at <strong>(555) 123-4567</strong> to schedule your 
-                            next pickup. Available 7 days a week with same-day service options.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">💰</div>
-                        <h3 class="feature-title">Get Quote</h3>
-                        <p class="feature-description">
-                            Need pricing information? Contact us for a free quote on any of our 
-                            services. We offer competitive rates and volume discounts.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🆘</div>
-                        <h3 class="feature-title">Emergency Service</h3>
-                        <p class="feature-description">
-                            Need urgent cleaning? Our emergency service is available for 
-                            same-day cleaning of important garments. Additional fees apply.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Additional Information -->
-            <section class="content-section">
-                <h2 class="section-title">ℹ️ Additional Information</h2>
-                <p class="section-text">
-                    <strong>Parking:</strong> Free customer parking available in front of our building 
-                    and in the adjacent lot. Handicap accessible entrance available.<br><br>
-                    
-                    <strong>Payment Methods:</strong> We accept cash, all major credit cards, 
-                    debit cards, and mobile payments (Apple Pay, Google Pay).<br><br>
-                    
-                    <strong>Languages:</strong> Our staff speaks English and Spanish. 
-                    Translation services available for other languages upon request.<br><br>
-                    
-                    <strong>Special Needs:</strong> We accommodate customers with special garment care 
-                    needs, allergies, or sensitivities. Please let us know how we can help.
-                </p>
-            </section>
-        </main>
-    </div>
+    <h1>Contact Us</h1>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <p>This is the contact page. Get in touch with us!</p>
+    <p>Email: example@email.com</p>
+    <p>Phone: (555) 123-4567</p>
 </body>
 </html>
