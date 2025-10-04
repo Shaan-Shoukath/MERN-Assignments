@@ -2,6 +2,8 @@
 
 A basic web server built with Node.js that serves HTML pages with routing.
 
+**Author:** Shaan Shoukath
+
 ## Features
 
 - Uses Node.js HTTP module
@@ -51,3 +53,12 @@ A basic web server built with Node.js that serves HTML pages with routing.
 - ✅ Proper HTTP status codes
 - ✅ Asynchronous file reading
 - ✅ Error handling with custom 404 page
+
+## About
+
+This project was created by Shaan Shoukath as part of a Node.js web development assignment. It demonstrates fundamental concepts of web server development using Node.js built-in modules.
+
+## Author
+
+**Shaan Shoukath**  
+Node.js Web Developer
