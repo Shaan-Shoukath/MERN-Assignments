@@ -168,8 +168,36 @@ function clearForm() {
   document.getElementById("phone").value = "";
 }
 
+// Initialize button visibility
+function initializeServiceButtons() {
+  document.querySelectorAll(".service-item").forEach((serviceItem) => {
+    const addButton = serviceItem.querySelector(".add-item");
+    const removeButton = serviceItem.querySelector(".remove-item");
+    
+    // Show add button by default, hide remove button
+    addButton.style.display = "inline-block";
+    removeButton.style.display = "none";
+  });
+}
+
+// Toggle button visibility
+function toggleServiceButtons(serviceItem, showRemove) {
+  const addButton = serviceItem.querySelector(".add-item");
+  const removeButton = serviceItem.querySelector(".remove-item");
+  
+  if (showRemove) {
+    addButton.style.display = "none";
+    removeButton.style.display = "inline-block";
+  } else {
+    addButton.style.display = "inline-block";
+    removeButton.style.display = "none";
+  }
+}
+
 // Initialize all event listeners when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize button visibility
+  initializeServiceButtons();
   // Smooth scrolling for navigation links
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -243,6 +271,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const serviceItem = this.closest(".service-item");
       const serviceId = parseInt(serviceItem.dataset.serviceId);
       addToCart(serviceId);
+      // Toggle to show remove button
+      toggleServiceButtons(serviceItem, true);
     });
   });
 
@@ -251,6 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const serviceItem = this.closest(".service-item");
       const serviceId = parseInt(serviceItem.dataset.serviceId);
       removeFromCart(serviceId);
+      // Toggle to show add button
+      toggleServiceButtons(serviceItem, false);
     });
   });
 
