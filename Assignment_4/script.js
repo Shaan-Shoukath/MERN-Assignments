@@ -1,6 +1,12 @@
+// EmailJS Configuration - Replace with your actual values
+const EMAILJS_CONFIG = {
+  PUBLIC_KEY: "YOUR_PUBLIC_KEY_HERE", // From EmailJS Account → General
+  SERVICE_ID: "YOUR_SERVICE_ID_HERE", // From EmailJS Email Services
+  TEMPLATE_ID: "YOUR_TEMPLATE_ID_HERE", // From EmailJS Email Templates
+};
+
 // Initialize EmailJS
-// Replace "YOUR_PUBLIC_KEY" with your actual EmailJS public key
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
 // Services data
 const services = [
@@ -69,12 +75,16 @@ function updateCartDisplay() {
         (item) => `
         <div class="cart-item">
           <span class="cart-item-name">${item.name} (x${item.quantity})</span>
-          <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+          <span class="cart-item-price">$${(item.price * item.quantity).toFixed(
+            2
+          )}</span>
         </div>
       `
       )
       .join("");
-    totalAmountElement.innerHTML = `<strong>Total: $${calculateTotal().toFixed(2)}</strong>`;
+    totalAmountElement.innerHTML = `<strong>Total: $${calculateTotal().toFixed(
+      2
+    )}</strong>`;
   }
 }
 
@@ -137,7 +147,12 @@ function sendBookingEmail() {
   const phone = document.getElementById("phone").value.trim();
 
   const orderDetails = cart
-    .map((item) => `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`)
+    .map(
+      (item) =>
+        `${item.name} (x${item.quantity}) - $${(
+          item.price * item.quantity
+        ).toFixed(2)}`
+    )
     .join("\n");
 
   const emailParams = {
@@ -148,14 +163,18 @@ function sendBookingEmail() {
     total_amount: calculateTotal().toFixed(2),
   };
 
-  // Replace with your actual Service ID and Template ID from EmailJS dashboard
-  return emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", emailParams);
+  // Use configuration values
+  return emailjs.send(
+    EMAILJS_CONFIG.SERVICE_ID,
+    EMAILJS_CONFIG.TEMPLATE_ID,
+    emailParams
+  );
 }
 
 function showConfirmationMessage() {
   const confirmationMessage = document.querySelector(".confirmation-message");
   confirmationMessage.style.display = "block";
-  
+
   // Auto-hide after 5 seconds
   setTimeout(() => {
     confirmationMessage.style.display = "none";
@@ -173,7 +192,7 @@ function initializeServiceButtons() {
   document.querySelectorAll(".service-item").forEach((serviceItem) => {
     const addButton = serviceItem.querySelector(".add-item");
     const removeButton = serviceItem.querySelector(".remove-item");
-    
+
     // Show add button by default, hide remove button
     addButton.style.display = "inline-block";
     removeButton.style.display = "none";
@@ -184,7 +203,7 @@ function initializeServiceButtons() {
 function toggleServiceButtons(serviceItem, showRemove) {
   const addButton = serviceItem.querySelector(".add-item");
   const removeButton = serviceItem.querySelector(".remove-item");
-  
+
   if (showRemove) {
     addButton.style.display = "none";
     removeButton.style.display = "inline-block";
@@ -252,7 +271,10 @@ document.addEventListener("DOMContentLoaded", function () {
     sections.forEach((section) => {
       const sectionTop = section.offsetTop - 100;
       const sectionHeight = section.clientHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
         current = section.getAttribute("id");
       }
     });
@@ -287,74 +309,82 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Book Now button functionality
-  document.querySelector(".book-now-btn").addEventListener("click", function () {
-    if (validateForm()) {
-      const button = this;
-      button.disabled = true;
-      button.textContent = "Sending...";
+  document
+    .querySelector(".book-now-btn")
+    .addEventListener("click", function () {
+      if (validateForm()) {
+        const button = this;
+        button.disabled = true;
+        button.textContent = "Sending...";
 
-      // Check if EmailJS is properly configured
-      if (emailjs && typeof emailjs.send === 'function') {
-        sendBookingEmail()
-          .then(function (response) {
-            console.log("Email sent successfully:", response);
-            showConfirmationMessage();
-            clearForm();
-            cart = [];
-            updateCartDisplay();
-          })
-          .catch(function (error) {
-            console.error("Email sending failed:", error);
-            // Still show confirmation message even if email fails
-            showConfirmationMessage();
-            clearForm();
-            cart = [];
-            updateCartDisplay();
-            alert("Booking confirmed! Note: Email service needs to be configured for email confirmations.");
-          })
-          .finally(function () {
-            button.disabled = false;
-            button.textContent = "Book Now";
-          });
-      } else {
-        // EmailJS not configured - show confirmation anyway
-        console.log("EmailJS not configured - showing confirmation message");
-        showConfirmationMessage();
-        clearForm();
-        cart = [];
-        updateCartDisplay();
-        button.disabled = false;
-        button.textContent = "Book Now";
+        // Check if EmailJS is properly configured
+        if (emailjs && typeof emailjs.send === "function") {
+          sendBookingEmail()
+            .then(function (response) {
+              console.log("Email sent successfully:", response);
+              showConfirmationMessage();
+              clearForm();
+              cart = [];
+              updateCartDisplay();
+            })
+            .catch(function (error) {
+              console.error("Email sending failed:", error);
+              // Still show confirmation message even if email fails
+              showConfirmationMessage();
+              clearForm();
+              cart = [];
+              updateCartDisplay();
+              alert(
+                "Booking confirmed! Note: Email service needs to be configured for email confirmations."
+              );
+            })
+            .finally(function () {
+              button.disabled = false;
+              button.textContent = "Book Now";
+            });
+        } else {
+          // EmailJS not configured - show confirmation anyway
+          console.log("EmailJS not configured - showing confirmation message");
+          showConfirmationMessage();
+          clearForm();
+          cart = [];
+          updateCartDisplay();
+          button.disabled = false;
+          button.textContent = "Book Now";
+        }
       }
-    }
-  });
+    });
 
   // Newsletter subscription functionality
-  document.querySelector(".subscribe-btn").addEventListener("click", function () {
-    const name = document.getElementById("newsletterName").value.trim();
-    const email = document.getElementById("newsletterEmail").value.trim();
+  document
+    .querySelector(".subscribe-btn")
+    .addEventListener("click", function () {
+      const name = document.getElementById("newsletterName").value.trim();
+      const email = document.getElementById("newsletterEmail").value.trim();
 
-    if (!name || !email) {
-      alert("Please fill in both name and email fields.");
-      return;
-    }
+      if (!name || !email) {
+        alert("Please fill in both name and email fields.");
+        return;
+      }
 
-    if (!validateEmail(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
 
-    // Show confirmation message
-    const confirmationMessage = document.querySelector(".newsletter-confirmation");
-    confirmationMessage.style.display = "block";
+      // Show confirmation message
+      const confirmationMessage = document.querySelector(
+        ".newsletter-confirmation"
+      );
+      confirmationMessage.style.display = "block";
 
-    // Clear form
-    document.getElementById("newsletterName").value = "";
-    document.getElementById("newsletterEmail").value = "";
+      // Clear form
+      document.getElementById("newsletterName").value = "";
+      document.getElementById("newsletterEmail").value = "";
 
-    // Hide confirmation after 3 seconds
-    setTimeout(() => {
-      confirmationMessage.style.display = "none";
-    }, 3000);
-  });
+      // Hide confirmation after 3 seconds
+      setTimeout(() => {
+        confirmationMessage.style.display = "none";
+      }, 3000);
+    });
 });
