@@ -9,7 +9,7 @@ const PORT = 3000;
 // Create the HTTP server
 const server = http.createServer((req, res) => {
   const url = req.url;
-  
+
   console.log(`Request received for: ${url}`);
 
   // Route handling - Define all available routes
@@ -39,7 +39,9 @@ function serveFile(filePath, res, contentType, statusCode = 200) {
       // Handle file read errors (e.g., file not found)
       console.error("Error reading file:", err);
       res.writeHead(500, { "Content-Type": "text/html" });
-      res.end("<h1>500 - Internal Server Error</h1><p>Unable to load the requested file.</p>");
+      res.end(
+        "<h1>500 - Internal Server Error</h1><p>Unable to load the requested file.</p>"
+      );
     } else {
       // Successfully read file, send with appropriate headers
       res.writeHead(statusCode, { "Content-Type": contentType });

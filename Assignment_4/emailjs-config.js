@@ -4,18 +4,18 @@
 // STEP 1: Replace these values with your actual EmailJS credentials
 const EMAILJS_CONFIG = {
   // Your EmailJS Public Key (from Account → General)
-  PUBLIC_KEY: "YOUR_PUBLIC_KEY_HERE", // Replace with your actual public key
-  
+  PUBLIC_KEY: "YOUR_EMAILJS_PUBLIC_KEY", // Replace with your actual public key
+
   // Your Email Service ID (from Email Services)
-  SERVICE_ID: "YOUR_SERVICE_ID_HERE", // Replace with your actual service ID
-  
+  SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID", // Replace with your actual service ID
+
   // Your Email Template ID (from Email Templates)
-  TEMPLATE_ID: "YOUR_TEMPLATE_ID_HERE" // Replace with your actual template ID
+  TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID", // Replace with your actual template ID
 };
 
 // STEP 2: Update script.js with these values:
 // 1. Replace "YOUR_PUBLIC_KEY" with EMAILJS_CONFIG.PUBLIC_KEY
-// 2. Replace "YOUR_SERVICE_ID" with EMAILJS_CONFIG.SERVICE_ID  
+// 2. Replace "YOUR_SERVICE_ID" with EMAILJS_CONFIG.SERVICE_ID
 // 3. Replace "YOUR_TEMPLATE_ID" with EMAILJS_CONFIG.TEMPLATE_ID
 
 // STEP 3: Email Template Variables

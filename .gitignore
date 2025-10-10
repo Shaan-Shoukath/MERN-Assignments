@@ -27,3 +27,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# EmailJS Configuration (contains sensitive API keys)
+**/emailjs-config.local.js
+**/emailjs-credentials.js

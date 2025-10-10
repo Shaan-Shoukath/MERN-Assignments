@@ -1,8 +1,8 @@
-// EmailJS Configuration - Replace with your actual values
+// EmailJS Configuration - Replace with your actual credentials
 const EMAILJS_CONFIG = {
-  PUBLIC_KEY: "YOUR_PUBLIC_KEY_HERE", // From EmailJS Account → General
-  SERVICE_ID: "YOUR_SERVICE_ID_HERE", // From EmailJS Email Services
-  TEMPLATE_ID: "YOUR_TEMPLATE_ID_HERE", // From EmailJS Email Templates
+  PUBLIC_KEY: "YOUR_EMAILJS_PUBLIC_KEY", // Replace with your EmailJS Public Key
+  SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID", // Replace with your EmailJS Service ID
+  TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID", // Replace with your EmailJS Template ID
 };
 
 // Initialize EmailJS
@@ -162,6 +162,13 @@ function sendBookingEmail() {
     order_details: orderDetails,
     total_amount: calculateTotal().toFixed(2),
   };
+
+  // Debug logging
+  console.log("📧 EmailJS Configuration:");
+  console.log("- Public Key:", EMAILJS_CONFIG.PUBLIC_KEY);
+  console.log("- Service ID:", EMAILJS_CONFIG.SERVICE_ID);
+  console.log("- Template ID:", EMAILJS_CONFIG.TEMPLATE_ID);
+  console.log("📋 Email Parameters:", emailParams);
 
   // Use configuration values
   return emailjs.send(
@@ -329,14 +336,26 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(function (error) {
               console.error("Email sending failed:", error);
-              // Still show confirmation message even if email fails
+
+              // Show specific error message for debugging
+              let errorMessage = "Email sending failed: ";
+              if (error.text) {
+                errorMessage += error.text;
+              } else if (error.message) {
+                errorMessage += error.message;
+              } else {
+                errorMessage += "Unknown error";
+              }
+
+              alert(
+                errorMessage + "\n\nPlease check the console for more details."
+              );
+
+              // Still show confirmation message
               showConfirmationMessage();
               clearForm();
               cart = [];
               updateCartDisplay();
-              alert(
-                "Booking confirmed! Note: Email service needs to be configured for email confirmations."
-              );
             })
             .finally(function () {
               button.disabled = false;
