@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for proper document structure and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Simple Web Server</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        p {
-            line-height: 1.6;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-    </style>
+    <title>Home - Node.js Web Server Assignment</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-    <h1>Welcome to the Home Page</h1>
-    <nav>
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <p>This is the home page of our simple Node.js web server.</p>
+    <div class="container">
+        <!-- Header section with main title -->
+        <header>
+            <h1>Welcome to Our Node.js Web Server</h1>
+        </header>
+
+        <!-- Navigation menu with links to all pages -->
+        <nav>
+            <ul>
+                <li><a href="/home" class="active">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main content area -->
+        <main>
+            <h2>Home Page</h2>
+            <p>Welcome to our Node.js web server demonstration! This server is built using only Node.js core modules including <strong>http</strong>, <strong>fs</strong>, and <strong>path</strong>. It showcases fundamental web server concepts and routing capabilities.</p>
+            
+            <!-- Feature cards showcasing server capabilities -->
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🚀 Core Modules Only</h3>
+                    <p>Built entirely with Node.js core modules - no external dependencies required. This demonstrates the power of Node.js built-in capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔄 Dynamic Routing</h3>
+                    <p>Handles multiple routes (/home, /about, /contact) with proper HTTP status codes and error handling for invalid routes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📁 File Serving</h3>
+                    <p>Serves HTML pages and CSS files asynchronously using fs.readFile() for optimal performance and non-blocking operations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎨 Styled Interface</h3>
+                    <p>Includes responsive CSS styling with modern design principles, navigation, and user-friendly interface elements.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer with copyright information -->
+        <footer>
+            <p>&copy; 2024 Node.js Web Server Assignment | Built with Node.js Core Modules</p>
+        </footer>
+    </div>
 </body>
 </html>

@@ -1,57 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for proper document structure and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Simple Web Server</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-            margin: 20px 0;
-        }
-        nav li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        p {
-            line-height: 1.6;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-    </style>
+    <title>About - Node.js Web Server Assignment</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-    <h1>About Us</h1>
-    <nav>
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <p>This is the about page. Learn more about our simple Node.js web server project.</p>
-    <p>This server demonstrates basic routing using the Node.js HTTP module.</p>
+    <div class="container">
+        <!-- Header section with page title -->
+        <header>
+            <h1>About Our Web Server</h1>
+        </header>
+
+        <!-- Navigation menu with links to all pages -->
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main content area -->
+        <main>
+            <h2>Project Overview</h2>
+            <p>This Node.js web server project demonstrates fundamental web development concepts using only Node.js core modules. The server showcases how to build a functional web application without external dependencies, highlighting the robust capabilities built into Node.js.</p>
+            
+            <h2>Technical Implementation</h2>
+            <p>The server is implemented using the <strong>HTTP module</strong> to create the server instance, the <strong>File System (fs) module</strong> for asynchronous file operations, and the <strong>Path module</strong> for handling file paths. All file operations use asynchronous methods to ensure non-blocking performance.</p>
+            
+            <h2>Key Features</h2>
+            <p>Our web server includes proper HTTP status code handling (200 for successful requests, 404 for not found, and 500 for server errors), dynamic routing for multiple endpoints, CSS file serving for styled pages, and comprehensive error handling for robust operation.</p>
+            
+            <h2>Learning Objectives</h2>
+            <p>This assignment demonstrates understanding of Node.js core modules, HTTP protocol fundamentals, asynchronous programming concepts, file system operations, and basic web server architecture. It serves as a foundation for more complex web development projects.</p>
+        </main>
+
+        <!-- Footer with copyright information -->
+        <footer>
+            <p>&copy; 2024 Node.js Web Server Assignment | Built with Node.js Core Modules</p>
+        </footer>
+    </div>
 </body>
 </html>

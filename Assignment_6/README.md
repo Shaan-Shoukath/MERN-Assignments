@@ -1,64 +1,48 @@
-# Simple Node.js Web Server
+# Assignment 6: Creating a Simple Web Server with Node.js
 
-A basic web server built with Node.js that serves HTML pages with routing.
-
-**Author:** Shaan Shoukath
-
-## Features
-
-- Uses Node.js HTTP module
-- Serves HTML pages for different routes
-- Inline CSS styling
-- Custom 404 error page
-- Basic error handling
+## Overview
+This project demonstrates the creation of a basic web server using Node.js core modules. The server handles multiple routes, serves HTML pages with CSS styling, and includes proper error handling.
 
 ## Project Structure
-
 ```
+Assignment_6/
 ├── server.js              # Main server file
-├── README.md              # This file
-└── pages/                 # HTML pages directory
-    ├── home.html         # Home page
-    ├── about.html        # About page
-    ├── contact.html      # Contact page
-    └── 404.html          # 404 error page
+├── pages/                 # HTML pages directory
+│   ├── home.html         # Home page
+│   ├── about.html        # About page
+│   ├── contact.html      # Contact page
+│   └── 404.html          # Custom 404 error page
+├── public/               # Static assets directory
+│   └── style.css         # CSS stylesheet
+└── README.md             # Project documentation
 ```
+
+## Features
+- ✅ Built with Node.js core modules only (http, fs, path)
+- ✅ Listens on port 3000
+- ✅ Handles routes: /home, /about, /contact
+- ✅ Serves HTML files for each route
+- ✅ Custom 404 page for invalid routes
+- ✅ Proper HTTP status codes (200, 404, 500)
+- ✅ Asynchronous file operations using fs.readFile()
+- ✅ CSS styling linked to all pages
+- ✅ Navigation links between pages
+- ✅ Comprehensive code comments
+- ✅ Responsive design
+- ✅ Error handling for file operations
 
 ## How to Run
-
-1. Start the server:
-
-   ```bash
-   node server.js
-   ```
-
-2. Open your browser and visit:
-   - http://localhost:3000/home
-   - http://localhost:3000/about
-   - http://localhost:3000/contact
+1. Navigate to the Assignment_6 directory
+2. Run the server: `node server.js`
+3. Open your browser and visit: `http://localhost:3000`
+4. Navigate between pages using the menu
 
 ## Available Routes
-
-- `/home` - Home page
-- `/about` - About page
+- `/` or `/home` - Home page
+- `/about` - About page  
 - `/contact` - Contact page
-- Any other route shows a 404 error page
+- `/public/style.css` - CSS stylesheet
+- Any other route - 404 error page
 
-## Requirements Met
-
-- ✅ Uses Node.js HTTP module
-- ✅ Server listens on port 3000
-- ✅ Routes for /home, /about, /contact
-- ✅ HTML pages for each route
-- ✅ Proper HTTP status codes
-- ✅ Asynchronous file reading
-- ✅ Error handling with custom 404 page
-
-## About
-
-This project was created by Shaan Shoukath as part of a Node.js web development assignment. It demonstrates fundamental concepts of web server development using Node.js built-in modules.
-
-## Author
-
-**Shaan Shoukath**  
-Node.js Web Developer
+## Technical Implementation
+The server uses the HTTP module to create a server instance, handles routing through URL parsing, serves files asynchronously using the fs module, and includes proper content-type headers for HTML and CSS files.

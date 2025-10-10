@@ -1,36 +1,48 @@
+// Import required Node.js core modules
 const http = require("http");
 const fs = require("fs");
+const path = require("path");
 
+// Define server configuration
 const PORT = 3000;
 
-// Create the server
+// Create the HTTP server
 const server = http.createServer((req, res) => {
   const url = req.url;
-
+  
   console.log(`Request received for: ${url}`);
 
-  // Route handling
+  // Route handling - Define all available routes
   if (url === "/" || url === "/home") {
-    serveFile("pages/home.html", res);
+    // Serve home page for root and /home routes
+    serveFile("pages/home.html", res, "text/html");
   } else if (url === "/about") {
-    serveFile("pages/about.html", res);
+    // Serve about page
+    serveFile("pages/about.html", res, "text/html");
   } else if (url === "/contact") {
-    serveFile("pages/contact.html", res);
+    // Serve contact page
+    serveFile("pages/contact.html", res, "text/html");
+  } else if (url === "/public/style.css") {
+    // Serve CSS file with proper content type
+    serveFile("public/style.css", res, "text/css");
   } else {
-    // 404 - Page not found
-    serveFile("pages/404.html", res, 404);
+    // Handle 404 - Page not found for any other routes
+    serveFile("pages/404.html", res, "text/html", 404);
   }
 });
 
-// Function to serve HTML files
-function serveFile(filePath, res, statusCode = 200) {
+// Function to serve files (HTML, CSS, etc.) with proper error handling
+function serveFile(filePath, res, contentType, statusCode = 200) {
+  // Use asynchronous file reading as required
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
+      // Handle file read errors (e.g., file not found)
       console.error("Error reading file:", err);
-      res.writeHead(404, { "Content-Type": "text/html" });
-      res.end("<h1>404 - Page Not Found</h1>");
+      res.writeHead(500, { "Content-Type": "text/html" });
+      res.end("<h1>500 - Internal Server Error</h1><p>Unable to load the requested file.</p>");
     } else {
-      res.writeHead(statusCode, { "Content-Type": "text/html" });
+      // Successfully read file, send with appropriate headers
+      res.writeHead(statusCode, { "Content-Type": contentType });
       res.end(data);
     }
   });
