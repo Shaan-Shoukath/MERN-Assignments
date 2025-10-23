@@ -1,76 +1,108 @@
-# To-Do List API
+# To-Do List API Planning
 
-A simple REST API for managing to-do tasks built with Express.js and React.
+## Project Overview
 
-## What it does
+This project focuses on planning and designing APIs for a To-Do List web application with React.js frontend. The documentation provides comprehensive API specifications following RESTful design conventions.
 
-This project provides a backend API server for a to-do list application with the following functionality:
+## Objective
 
-- **Get all todos** - Retrieve a list of all to-do items
-- **Get specific todo** - Retrieve a single to-do item by ID
-- **Create new todo** - Add a new to-do item with text and completion status
-- **Update todo** - Modify an existing to-do item
-- **Delete todo** - Remove a to-do item from the list
+Plan and outline the APIs required for a To-Do List web app, including:
+- All CRUD operations (Create, Read, Update, Delete)
+- Additional useful routes (filtering, bulk operations, statistics)
+- RESTful API design conventions
+- Comprehensive documentation with request/response examples
 
-## API Endpoints
+## Project Files
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/todos` | Get all todos |
-| GET | `/api/todos/:id` | Get a specific todo by ID |
-| POST | `/api/todos` | Create a new todo |
-| PATCH | `/api/todos/:id` | Update a todo |
-| DELETE | `/api/todos/:id` | Delete a todo |
+### Core Documentation
+- **`ASSIGNMENT_SUBMISSION.md`** - Main assignment document (ready for Google Docs)
+- **`API_SPECIFICATION.md`** - Technical API reference
+- **`README.md`** - This overview document
 
-### Request Format for Creating Todos
+### Supporting Files
+- **`server.js`** - Basic server setup for testing
+- **`package.json`** - Node.js dependencies
 
+## Key Features Planned
+
+### Core CRUD Operations
+1. **Create Task** - `POST /api/todos`
+2. **Get All Tasks** - `GET /api/todos` (with filtering & pagination)
+3. **Get Single Task** - `GET /api/todos/:id`
+4. **Update Task** - `PUT /api/todos/:id` (complete replacement)
+5. **Partial Update** - `PATCH /api/todos/:id` (specific fields)
+6. **Delete Task** - `DELETE /api/todos/:id`
+
+### Enhanced Functionality
+7. **Mark Complete** - `PATCH /api/todos/:id/complete`
+8. **Mark Incomplete** - `PATCH /api/todos/:id/incomplete`
+9. **Get Statistics** - `GET /api/todos/stats`
+10. **Bulk Operations** - `PATCH /api/todos/bulk`
+
+## API Design Highlights
+
+### RESTful Conventions
+- Proper HTTP methods (GET, POST, PUT, PATCH, DELETE)
+- Consistent URL patterns (`/api/todos`, `/api/todos/:id`)
+- Appropriate status codes (200, 201, 400, 404, 500)
+- JSON request/response format
+
+### Advanced Features
+- **Pagination** - Efficient handling of large datasets
+- **Filtering** - By completion status, priority, category
+- **Sorting** - By creation date, due date, priority
+- **Bulk Operations** - Multiple task operations in single request
+- **Statistics** - Dashboard data for analytics
+
+### Data Model
 ```json
 {
-  "text": "Task description",
-  "completed": false
+  "id": 1,
+  "title": "Complete project documentation",
+  "description": "Finish the API planning document",
+  "priority": "high",
+  "dueDate": "2024-12-15",
+  "category": "work",
+  "completed": false,
+  "createdAt": "2024-10-10T10:30:00Z",
+  "updatedAt": "2024-10-10T10:30:00Z"
 }
 ```
 
-## Getting Started
+## Implementation Challenges Identified
 
-### Prerequisites
+1. **Data Validation & Security** - Input sanitization, XSS prevention
+2. **Authentication & Authorization** - User-specific task access
+3. **Database Performance** - Indexing, query optimization
+4. **Error Handling** - Consistent error responses
+5. **Data Consistency** - Concurrent update handling
+6. **API Versioning** - Backward compatibility management
 
-- Node.js installed on your system
+## Learning Outcomes
 
-### Installation
+This project demonstrates understanding of:
+- RESTful API design principles
+- HTTP methods and status codes
+- Request/response data structures
+- API documentation best practices
+- Implementation challenge identification
+- Technical planning and documentation
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Usage Instructions
 
-### Running the Server
+1. **For Assignment Submission**: Use `ASSIGNMENT_SUBMISSION.md` (copy to Google Docs)
+2. **For Technical Reference**: Use `API_SPECIFICATION.md`
+3. **For Testing**: Use the basic server setup in `server.js`
 
-Start the API server:
-```bash
-npm run server
-```
-or
-```bash
-npm start
-```
+## Next Steps
 
-The server will run on `http://localhost:3001`
+This API specification serves as a blueprint for:
+- Backend API implementation
+- React.js frontend integration
+- Database schema design
+- Testing strategy development
+- Security implementation planning
 
-### Development
+---
 
-For frontend development with Vite:
-```bash
-npm run dev
-```
-
-## Tech Stack
-
-- **Backend**: Express.js
-- **Frontend**: React with Vite
-- **Development**: ESLint for code linting
-
-## Note
-
-This is currently a basic API structure that returns placeholder messages. The endpoints are set up but not yet connected to a database or persistent storage.
+**Project Status**: Complete - Ready for Implementation

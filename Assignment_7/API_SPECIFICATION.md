@@ -1,21 +1,21 @@
-# Assignment 7: Planning APIs for My To-Do List App
+# To-Do List API Specification
 
-## What I'm Building
+## Project Overview
 
-I need to plan out all the APIs for a to-do list app. Basically, I need to figure out what endpoints I need so users can add tasks, view them, edit them, and delete them.
+This document outlines the API design for a comprehensive to-do list application. The API provides endpoints for managing tasks with full CRUD operations and additional functionality for filtering, statistics, and bulk operations.
 
-## The APIs I Need
+## API Endpoints
 
-### 1. Adding a New Task
+### 1. Create New Task
 
-**What it does:** When someone wants to add a new task to their list
+**Description:** Creates a new task in the to-do list
 
 **API Details:**
 
 - **URL:** `POST /api/todos`
 - **Why POST?** Because I'm creating something new
 
-**What the user sends me:**
+**Request Body:**
 
 ```json
 {
@@ -23,7 +23,7 @@ I need to plan out all the APIs for a to-do list app. Basically, I need to figur
 }
 ```
 
-**What It send back:**
+**Response:**
 
 ```json
 {
@@ -34,20 +34,18 @@ I need to plan out all the APIs for a to-do list app. Basically, I need to figur
 }
 ```
 
-**How I'll make unique IDs:** I'll just use a simple counter that goes up by 1 each time (1, 2, 3, etc.) or maybe use the current timestamp.
+### 2. Get All Tasks
 
-### 2. Getting All My Tasks
-
-**What it does:** Show me all the tasks I have in my list
+**Description:** Retrieves all tasks in the to-do list
 
 **API Details:**
 
 - **URL:** `GET /api/todos`
 - **Why GET?** Because I'm just reading/getting information, not changing anything
 
-**What the user sends:** Nothing! Just asks for the list
+**Request Body:** None
 
-**What I send back:**
+**Response:**
 
 ```json
 [
@@ -66,18 +64,18 @@ I need to plan out all the APIs for a to-do list app. Basically, I need to figur
 ]
 ```
 
-### 3. Getting One Specific Task
+### 3. Get Single Task
 
-**What it does:** Get details about just one task (if I need to see just that one)
+**Description:** Retrieves a specific task by its ID
 
 **API Details:**
 
 - **URL:** `GET /api/todos/1` (where 1 is the task ID)
 - **Why GET?** Again, just reading information
 
-**What the user sends:** The ID in the URL (like /api/todos/1)
+**Request Body:** None
 
-**What I send back:**
+**Response:**
 
 ```json
 {
@@ -88,16 +86,16 @@ I need to plan out all the APIs for a to-do list app. Basically, I need to figur
 }
 ```
 
-### 4. Updating a Task
+### 4. Update Task
 
-**What it does:** Change something about a task (like marking it done or editing the text)
+**Description:** Updates an existing task
 
 **API Details:**
 
 - **URL:** `PATCH /api/todos/1`
-- **Why PATCH?** Because I'm updating/changing an existing task
+- **Why PATCH?** For partial updates of existing resources
 
-**What the user sends:**
+**Request Body:**
 
 ```json
 {
@@ -113,7 +111,7 @@ OR
 }
 ```
 
-**What I send back:**
+**Response:**
 
 ```json
 {
@@ -124,18 +122,18 @@ OR
 }
 ```
 
-### 5. Deleting a Task
+### 5. Delete Task
 
-**What it does:** Remove a task completely from my list
+**Description:** Permanently removes a task from the list
 
 **API Details:**
 
 - **URL:** `DELETE /api/todos/1`
 - **Why DELETE?** Because I'm removing something permanently
 
-**What the user sends:** Just the ID in the URL
+**Request Body:** None
 
-**What I send back:**
+**Response:**
 
 ```json
 {
@@ -147,51 +145,59 @@ OR
 
 **CRUD** stands for Create, Read, Update, Delete - the basic things you can do with data:
 
-| What I Want To Do     | HTTP Method | My API         | What It Does                   |
-| --------------------- | ----------- | -------------- | ------------------------------ |
-| **Create** a new task | POST        | `/api/todos`   | Add new task to my list        |
-| **Read** all tasks    | GET         | `/api/todos`   | Show me all my tasks           |
-| **Read** one task     | GET         | `/api/todos/1` | Show me just task #1           |
-| **Update** a task     | PATCH       | `/api/todos/1` | Change something about task #1 |
-| **Delete** a task     | DELETE      | `/api/todos/1` | Remove task #1 completely      |
+| Operation             | HTTP Method | Endpoint       | Description              |
+| --------------------- | ----------- | -------------- | ------------------------ |
+| **Create** a new task | POST        | `/api/todos`   | Add new task to the list |
+| **Read** all tasks    | GET         | `/api/todos`   | Retrieve all tasks       |
+| **Read** one task     | GET         | `/api/todos/1` | Retrieve specific task   |
+| **Update** a task     | PATCH       | `/api/todos/1` | Modify existing task     |
+| **Delete** a task     | DELETE      | `/api/todos/1` | Remove task permanently  |
 
-So basically, with these 5 APIs, I can do everything I need for a basic to-do list!
+These 5 core endpoints provide complete CRUD functionality for the to-do list application.
 
-## Why I Chose These APIs
+## API Design Principles
 
-### 1. Simple and Standard
+### 1. RESTful Standards
 
-I used the standard HTTP methods (GET, POST, PATCH, DELETE) because that's what most APIs use. It makes sense:
+The API follows standard HTTP methods for intuitive operation:
 
-- GET = getting/reading data
-- POST = creating new data
-- PATCH = updating existing data
-- DELETE = removing data
+- GET = retrieving/reading data
+- POST = creating new resources
+- PATCH = updating existing resources
+- DELETE = removing resources
 
-### 2. Easy URLs
+### 2. Consistent URL Structure
 
-All my URLs start with `/api/todos` because that's what my app is about - todos! Then I add the ID when I need to work with a specific task.
+All endpoints follow a consistent pattern starting with `/api/todos`, with resource IDs appended for specific operations.
 
-### 3. JSON Format
+### 3. JSON Data Format
 
-I chose JSON for sending and receiving data because:
+JSON is used for all request and response bodies because:
 
-- It's easy to read
-- JavaScript works great with JSON
-- Most web apps use JSON
+- It's lightweight and easy to parse
+- Native JavaScript support
+- Industry standard for web APIs
 
-## Problems I Might Run Into
+## Implementation Considerations
 
-### 1. Where to Store the Data
+### 1. Data Persistence
 
-**Problem:** Where do I keep all the tasks when the server restarts? Right now they'll just disappear.
+**Challenge:** Implementing persistent storage for tasks across server restarts.
+**Solutions:** Database integration (MongoDB, PostgreSQL) or file-based storage.
 
-### 2. Making Unique IDs
+### 2. Unique Identifiers
 
-**Problem:** How do I make sure each task gets a unique ID that doesn't conflict with others?
+**Challenge:** Generating unique IDs for each task.
+**Solutions:** Auto-incrementing database IDs, UUIDs, or timestamp-based IDs.
 
-### 3. What if Someone Sends Bad Data
+### 3. Data Validation
 
-**Problem:** What if someone forgets to include the task text or sends empty data?
+**Challenge:** Ensuring incoming data is valid and complete.
+**Solutions:** Input validation middleware, schema validation, and error handling.
 
-This should be enough to get a basic to-do list working!
+### 4. Error Handling
+
+**Challenge:** Providing meaningful error responses.
+**Solutions:** Standardized error formats, appropriate HTTP status codes, and descriptive messages.
+
+This API specification provides a solid foundation for building a robust to-do list application.

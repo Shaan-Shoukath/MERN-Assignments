@@ -333,6 +333,8 @@ document.addEventListener("DOMContentLoaded", function () {
               clearForm();
               cart = [];
               updateCartDisplay();
+              // Reset all service buttons to "Add Item" state
+              initializeServiceButtons();
             })
             .catch(function (error) {
               console.error("Email sending failed:", error);
@@ -356,6 +358,8 @@ document.addEventListener("DOMContentLoaded", function () {
               clearForm();
               cart = [];
               updateCartDisplay();
+              // Reset all service buttons to "Add Item" state
+              initializeServiceButtons();
             })
             .finally(function () {
               button.disabled = false;
@@ -368,6 +372,8 @@ document.addEventListener("DOMContentLoaded", function () {
           clearForm();
           cart = [];
           updateCartDisplay();
+          // Reset all service buttons to "Add Item" state
+          initializeServiceButtons();
           button.disabled = false;
           button.textContent = "Book Now";
         }
